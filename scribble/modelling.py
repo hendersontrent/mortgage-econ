@@ -14,6 +14,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import seaborn as sns
+import scipy as sp
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import statsmodels.api as sm
@@ -67,16 +68,6 @@ new_y = m1.predict(X_test_new)
 print(mean_squared_error(y_test, new_y))
 
 #%%
-
-predictions = m1.get_prediction(X_test_new)
-frame = predictions.summary_frame(alpha = 0.05)
-
-pred_d = {'lower': frame.obs_ci_lower, 'upper': frame.obs_ci_upper}
-pred_df = pd.DataFrame(data = pred_d)
-
-#%%
-
-import scipy as sp
 
 se = sp.stats.sem(new_y)
 
