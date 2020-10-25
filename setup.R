@@ -10,17 +10,23 @@
 # Load packages
 
 library(tidyverse)
-library(DBI)
 library(mgcv)
 library(scales)
 library(MASS)
 library(sjPlot)
 library(ggpubr)
+library(tidyLPA)
 library(Cairo)
 
 # Turn off scientific notation
 
 options(scipen = 999)
+
+# Load data
+
+d <- read_csv("data/mortgage-data.csv") %>%
+  filter(main_state != "OT") %>%
+  filter(!is.na(main_state))
 
 # Create an output folder if none exists:
 

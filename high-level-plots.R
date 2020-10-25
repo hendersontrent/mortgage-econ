@@ -1,27 +1,11 @@
 #-------------------------------------------
 # This script sets out to produce high level
-# initial plots and some basic modelling
-# diagnostics
+# initial plots
 #-------------------------------------------
 
 #-------------------------------------------
 # Author: Trent Henderson, 22 September 2020
 #-------------------------------------------
-
-library(tidyverse)
-library(scales)
-library(Cairo)
-library(mgcv)
-
-# Create an output folder if none exists:
-
-if(!dir.exists('output')) dir.create('output')
-
-# Load data
-
-d <- read_csv("data/educ-occ-mortgage.csv") %>%
-  filter(main_state != "OT") %>%
-  filter(!is.na(main_state))
 
 #------------------------ DATA VISUALISATIONS ----------------------
 
@@ -59,20 +43,6 @@ print(p)
 p1 <- plotter(d) +
   facet_wrap(~main_state)
 print(p1)
-
-#------------------------ MODELLING DIAGNOSTICS --------------------
-
-# Specify models
-
-m1 <- glm(median_mortgage_repayment ~ educ_occ_score, data = d)
-m2 <- gam(median_mortgage_repayment ~ s(educ_occ_score), data = d)
-m3 <- gam(median_mortgage_repayment ~ s(educ_occ_score) + main_state, data = d)
-
-# Check AICs
-
-AIC(m1)
-AIC(m2)
-AIC(m3)
 
 #------------------------ EXPORTS ----------------------------------
 
