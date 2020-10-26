@@ -93,7 +93,7 @@ p <- d3 %>%
   gather(key = metric, value = value, 7:11) %>%
   mutate(metric = case_when(
     metric == "scaled_pop"   ~ "Usual Resident Population",
-    metric == "scaled_int"   ~ "Prop Dwellings with Internet Access",
+    metric == "scaled_int"   ~ "Proportion of Dwellings with Internet Access",
     metric == "scaled_pay"   ~ "Median Mortgage Repayment",
     metric == "scaled_inc"   ~ "Median Household Income",
     metric == "scaled_seifa" ~ "SEIFA Education Occupation Index")) %>%
