@@ -17,6 +17,7 @@ library(sjPlot)
 library(ggpubr)
 library(tidyLPA)
 library(Cairo)
+library(ggcorrplot)
 
 # Turn off scientific notation
 
